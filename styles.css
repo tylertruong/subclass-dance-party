@@ -1,41 +1,58 @@
 body, html{
-  height:100%;
-  background: url("images/background/springgrass.png") no-repeat center center fixed; 
+  height: 100%;
+  background: url("images/background/springgrass.png") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-body{
+body {
   margin: 0px;
   font-size: 18px;
 }
+
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
+
 .title, .addDancerButton, .lineUpButton, .findPartnerButton {
   padding:5px 12px;
   float:right;
 }
+
 .topbar{
   height:32px;
   background-color: #555;
 }
+
 .title{
   background-color: #777;
 }
+
 .dancer{
   position:absolute;
+  height: 200px;
+  width: 200px;
+  background-image: url("images/pokemon/pikachu.gif");
+  background-size: contain;
+}
+
+.blinkyDancer {
 
 }
-.dancerTurnBlue{
-  border:10px solid blue;
-  border-radius:10px;
-  position:absolute;
+
+.slideDancer {
+  background: url("images/pokemon/thing.gif") no-repeat;
 }
+
+.rotateDancer {
+  background-image: url("images/pokemon/bulbasaur.gif");
+}
+
 .dancerPartnerEffect {
   border-radius:0px;
 }
+
 .colorChangeDancerEffect {
   border:10px solid green;
 }

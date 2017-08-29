@@ -21,7 +21,6 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
@@ -52,12 +51,12 @@ $(document).ready(function() {
           minDistance = distance;
           minPartner = window.dancers[j];
         }
-          
+
       }
       window.dancers[i].danceWithPartner(minPartner);
     }
   });
-  
+
   $('.addDancerButton').on('click', function() {
     $('.dancer').mouseenter(function() {
       //console.log('AHH!! A MOUSE! STOP!!!!');
@@ -74,4 +73,3 @@ $(document).ready(function() {
   });
 
 });
-

@@ -1,20 +1,18 @@
-// Creates and returns a new dancer object that can step
-var makeDancer = function(top, left, timeBetweenSteps) {
-  this.$node = $('<span class="dancer"><img src="images/pokemon/pikachu.gif"/></span>');
- // this.$node = $('<span class="dancer"></span>');
-  this.step();
+var Dancer = function(top, left, timeBetweenSteps) {
+  this.$node = $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.top = top;
   this.left = left;
   this.danceProcessId;
   this.setPosition(top, left);
+  this.step();
 };
 
-makeDancer.prototype.step = function() {
+Dancer.prototype.step = function() {
   this.danceProcessId = setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
-makeDancer.prototype.setPosition = function(top, left) {
+Dancer.prototype.setPosition = function(top, left) {
   var styleSettings = {
     top: top,
     left: left
@@ -22,17 +20,16 @@ makeDancer.prototype.setPosition = function(top, left) {
   this.$node.css(styleSettings);
 };
 
-makeDancer.prototype.lineUp = function(offset) { 
-  this.setPosition(offset, 250);
+Dancer.prototype.lineUp = function(offset) {
+  this.setPosition(offset, Math.floor(window.innerWidth/2));
 };
 
-makeDancer.prototype.danceWithPartner = function(otherDancer) {
+Dancer.prototype.danceWithPartner = function(otherDancer) {
   this.$node.addClass('dancerPartnerEffect');
   otherDancer.$node.addClass('dancerPartnerEffect');
 };
 
-makeDancer.prototype.stopDance = function() {
+Dancer.prototype.stopDance = function() {
   clearTimeout(this.danceProcessId);
   this.danceProcessId = null;
 };
-
