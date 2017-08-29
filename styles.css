@@ -9,6 +9,7 @@ body, html{
 body {
   margin: 0px;
   font-size: 18px;
+  font-family: sans-serif;
 }
 
 body, a:link, a:visited, a:active{
@@ -17,7 +18,7 @@ body, a:link, a:visited, a:active{
 
 .title, .addDancerButton, .lineUpButton, .findPartnerButton {
   padding:5px 12px;
-  float:right;
+  float:left;
 }
 
 .topbar{

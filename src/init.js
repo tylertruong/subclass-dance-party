@@ -33,6 +33,8 @@ $(document).ready(function() {
 
   $('.lineUpButton').on('click', function(event) {
     window.dancers.forEach(function(dancer, index) {
+      var dancerGroups = {};
+      
       dancer.lineUp(index * 120);
     });
   });
@@ -65,21 +67,20 @@ $(document).ready(function() {
     distancesBetweenDancers.forEach(pair => {
       if (!(alreadyPartnered.includes(pair[1]) || alreadyPartnered.includes(pair[2]))) {
         alreadyPartnered.push(...[pair[1], pair[2]]);
-      }
-      pair[1].danceWithPartner(pair[2]);
+        pair[1].danceWithPartner(pair[2]);
+      } 
     });
   });
 
   $('.addDancerButton').on('click', function() {
-    $('.dancer').mouseenter(function() {
+    $('.dancer').mouseover(function(ev) {
       window.dancers.forEach(dancer => {
         if (dancer.danceProcessId) {
           dancer.stopDance();
         } else {
           dancer.step();
         }
-
-      });
+      }); 
     });
   });
 

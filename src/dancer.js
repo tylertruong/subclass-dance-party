@@ -34,9 +34,6 @@ class Dancer {
     partnerStyle['border-color'] = colors[Math.floor(Math.random() * colors.length)];
     this.$node.css(partnerStyle);
     partner.$node.css(partnerStyle);
-    //this.$node.addClass('dancerPartnerEffect');
-    //partner.$node.addClass('dancerPartnerEffect');
-    
   }
 
   stopDance () {
