@@ -16,9 +16,4 @@ class RotateDancer extends Dancer {
   lineUp (offset) {
     this.setPosition(Math.floor(window.innerHeight / 3), offset);
   }
-
-  danceWithPartner (otherDancer) {
-    this.$node.addClass('colorChangeDancerEffect');
-    otherDancer.$node.addClass('colorChangeDancerEffect');
-  }
 }

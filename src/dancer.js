@@ -25,9 +25,18 @@ class Dancer {
     this.setPosition(offset, Math.floor(window.innerWidth / 2));
   }
 
-  danceWithPartner (otherDancer) {
-    this.$node.addClass('dancerPartnerEffect');
-    otherDancer.$node.addClass('dancerPartnerEffect');
+  danceWithPartner (partner) {
+    const colors = ['blue', 'green', 'pink', 'purple', 'teal', 'grey', 'white', 'black', 'orange', 'yellow'];
+    var partnerStyle = {
+      'border': '10px solid', 
+      'border-radius': '100px'
+    };
+    partnerStyle['border-color'] = colors[Math.floor(Math.random() * colors.length)];
+    this.$node.css(partnerStyle);
+    partner.$node.css(partnerStyle);
+    //this.$node.addClass('dancerPartnerEffect');
+    //partner.$node.addClass('dancerPartnerEffect');
+    
   }
 
   stopDance () {

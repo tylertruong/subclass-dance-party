@@ -33,35 +33,45 @@ $(document).ready(function() {
 
   $('.lineUpButton').on('click', function(event) {
     window.dancers.forEach(function(dancer, index) {
-      dancer.lineUp(index * 30);
+      dancer.lineUp(index * 120);
     });
   });
 
   $('.findPartnerButton').on('click', function(event) {
-    for (var i = 0; i < window.dancers.length; i++) {
-      var minPartner = window.dancers[i];
-      for (var j = 0; j < window.dancers.length; j++) {
+    var partnerDistanceThreshold = 300;
+    var distancesBetweenDancers = [];
+    var fixedDancers = window.dancers.filter(dancer =>
+      dancer.constructor.name !== 'SlideDancer'
+    );
+    for (var i = 0; i < fixedDancers.length; i++) {
+      var minPartner = fixedDancers[i];
+      for (var j = 0; j < fixedDancers.length; j++) {
         if (i === j) {
           continue;
         }
-        var verticalDistance = window.dancers[i].top - window.dancers[j].top;
-        var horizontalDistance = window.dancers[i].left - window.dancers[j].left;
+        var verticalDistance = fixedDancers[i].top - fixedDancers[j].top;
+        var horizontalDistance = fixedDancers[i].left - fixedDancers[j].left;
         var distance = Math.sqrt(Math.pow(verticalDistance, 2) + Math.pow(horizontalDistance, 2));
-        var minDistance = minDistance || distance;
-        if (distance <= minDistance) {
-          minDistance = distance;
-          minPartner = window.dancers[j];
+        if (distance <= partnerDistanceThreshold) {
+          distancesBetweenDancers.push([distance, fixedDancers[i], fixedDancers[j]]);
         }
-
       }
-      window.dancers[i].danceWithPartner(minPartner);
     }
+    distancesBetweenDancers.sort(function(d1, d2) {
+      return d1[0] - d2[0];
+    });
+
+    var alreadyPartnered = [];
+    distancesBetweenDancers.forEach(pair => {
+      if (!(alreadyPartnered.includes(pair[1]) || alreadyPartnered.includes(pair[2]))) {
+        alreadyPartnered.push(...[pair[1], pair[2]]);
+      }
+      pair[1].danceWithPartner(pair[2]);
+    });
   });
 
   $('.addDancerButton').on('click', function() {
     $('.dancer').mouseenter(function() {
-      //console.log('AHH!! A MOUSE! STOP!!!!');
-      //$('.dancer').addClass('dancer-stopper');
       window.dancers.forEach(dancer => {
         if (dancer.danceProcessId) {
           dancer.stopDance();

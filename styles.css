@@ -50,9 +50,7 @@ body, a:link, a:visited, a:active{
 }
 
 .dancerPartnerEffect {
-  border-radius:0px;
+  border:10px solid red;
+  border-radius:100px;
 }
 
-.colorChangeDancerEffect {
-  border:10px solid green;
-}
