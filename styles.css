@@ -36,3 +36,8 @@ body, a:link, a:visited, a:active{
 .colorChangeDancerEffect {
   border:10px solid green;
 }
+.dancer-stopper{
+  border:10px solid red;
+  border-radius:10px;
+  position:absolute;
+}

@@ -57,6 +57,21 @@ $(document).ready(function() {
       window.dancers[i].danceWithPartner(minPartner);
     }
   });
+  
+  $('.addDancerButton').on('click', function() {
+    $('.dancer').mouseenter(function() {
+      //console.log('AHH!! A MOUSE! STOP!!!!');
+      //$('.dancer').addClass('dancer-stopper');
+      window.dancers.forEach(dancer => {
+        if (dancer.danceProcessId) {
+          dancer.stopDance();
+        } else {
+          dancer.step();
+        }
+
+      });
+    });
+  });
 
 });
 
