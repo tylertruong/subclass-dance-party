@@ -1,26 +1,24 @@
-var RotateDancer = function(top, left, timeBetweenSteps) {
-  Dancer.call(this, top, left, timeBetweenSteps);
-  this.degreesRotated = 0;
-  this.$node.addClass('rotateDancer');
-};
+class RotateDancer extends Dancer {
+  constructor (top, left, timeBetweenSteps) {
+    super(top, left, timeBetweenSteps);
+    this.degreesRotated = 0;
+    this.$node.addClass('rotateDancer');
+  }
 
-RotateDancer.prototype = Object.create(Dancer.prototype);
+  step () {
+    super.step();
+    this.degreesRotated += 45;
+    this.$node.css({
+      transform: 'rotate(' + this.degreesRotated + 'deg)'
+    });
+  }
 
-RotateDancer.prototype.constructor = RotateDancer;
+  lineUp (offset) {
+    this.setPosition(Math.floor(window.innerHeight / 3), offset);
+  }
 
-RotateDancer.prototype.step = function() {
-  Dancer.prototype.step.call(this);
-  this.degreesRotated += 45;
-  this.$node.css({
-    transform: 'rotate(' + this.degreesRotated + 'deg)'
-  });
-};
-
-Dancer.prototype.lineUp = function(offset) {
-  this.setPosition(Math.floor(window.innerHeight/3), offset);
-};
-
-RotateDancer.prototype.danceWithPartner = function(otherDancer) {
-  this.$node.addClass('colorChangeDancerEffect');
-  otherDancer.$node.addClass('colorChangeDancerEffect');
-};
+  danceWithPartner (otherDancer) {
+    this.$node.addClass('colorChangeDancerEffect');
+    otherDancer.$node.addClass('colorChangeDancerEffect');
+  }
+}
