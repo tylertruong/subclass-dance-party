@@ -1,9 +1,13 @@
 body, html{
   height:100%;
+  background: url("images/background/springgrass.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 body{
   margin: 0px;
-  background-color:#444;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -21,9 +25,8 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
   position:absolute;
+
 }
 .dancerTurnBlue{
   border:10px solid blue;
@@ -35,9 +38,4 @@ body, a:link, a:visited, a:active{
 }
 .colorChangeDancerEffect {
   border:10px solid green;
-}
-.dancer-stopper{
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
 }

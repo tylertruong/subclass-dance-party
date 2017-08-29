@@ -1,7 +1,7 @@
 // Creates and returns a new dancer object that can step
 var makeDancer = function(top, left, timeBetweenSteps) {
-  this.$node = $('<span class="dancer"></span>');
-
+  this.$node = $('<span class="dancer"><img src="images/pokemon/pikachu.gif"/></span>');
+ // this.$node = $('<span class="dancer"></span>');
   this.step();
   this.timeBetweenSteps = timeBetweenSteps;
   this.top = top;
