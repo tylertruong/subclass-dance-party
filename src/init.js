@@ -15,14 +15,14 @@ $(document).ready(function() {
      * A new object of the given type will be created and added
      * to the stage.
      */
-    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
+    let dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
     // get the maker function for the kind of dancer we're supposed to make
     const classes = {Dancer, BlinkyDancer, RotateDancer, SlideDancer}; 
-    var dancerMakerFunction = classes[dancerMakerFunctionName];
+    let dancerMakerFunction = classes[dancerMakerFunctionName];
 
     // make a dancer with a random position
-    var dancer = new dancerMakerFunction(
+    let dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
@@ -31,39 +31,34 @@ $(document).ready(function() {
     window.dancers.push(dancer);
   });
 
-  $('.lineUpButton').on('click', function(event) {
-    window.dancers.forEach(function(dancer, index) {
-      var dancerGroups = {};
-      
+  $('.lineUpButton').on('click', event => {
+    window.dancers.forEach((dancer, index) => {
       dancer.lineUp(index * 120);
     });
   });
 
-  $('.findPartnerButton').on('click', function(event) {
-    var partnerDistanceThreshold = 300;
-    var distancesBetweenDancers = [];
-    var fixedDancers = window.dancers.filter(dancer =>
+  $('.findPartnerButton').on('click', event => {
+    const partnerDistanceThreshold = 300;
+    const distancesBetweenDancers = [];
+    const fixedDancers = window.dancers.filter(dancer =>
       dancer.constructor.name !== 'SlideDancer'
     );
-    for (var i = 0; i < fixedDancers.length; i++) {
-      var minPartner = fixedDancers[i];
-      for (var j = 0; j < fixedDancers.length; j++) {
+    for (let i = 0; i < fixedDancers.length; i++) {
+      for (let j = 0; j < fixedDancers.length; j++) {
         if (i === j) {
           continue;
         }
-        var verticalDistance = fixedDancers[i].top - fixedDancers[j].top;
-        var horizontalDistance = fixedDancers[i].left - fixedDancers[j].left;
-        var distance = Math.sqrt(Math.pow(verticalDistance, 2) + Math.pow(horizontalDistance, 2));
+        const verticalDistance = fixedDancers[i].top - fixedDancers[j].top;
+        const horizontalDistance = fixedDancers[i].left - fixedDancers[j].left;
+        const distance = Math.sqrt(Math.pow(verticalDistance, 2) + Math.pow(horizontalDistance, 2));
         if (distance <= partnerDistanceThreshold) {
           distancesBetweenDancers.push([distance, fixedDancers[i], fixedDancers[j]]);
         }
       }
     }
-    distancesBetweenDancers.sort(function(d1, d2) {
-      return d1[0] - d2[0];
-    });
+    distancesBetweenDancers.sort((d1, d2) => d1[0] - d2[0]);
 
-    var alreadyPartnered = [];
+    const alreadyPartnered = [];
     distancesBetweenDancers.forEach(pair => {
       if (!(alreadyPartnered.includes(pair[1]) || alreadyPartnered.includes(pair[2]))) {
         alreadyPartnered.push(...[pair[1], pair[2]]);
@@ -72,8 +67,8 @@ $(document).ready(function() {
     });
   });
 
-  $('.addDancerButton').on('click', function() {
-    $('.dancer').mouseover(function(ev) {
+  $('.addDancerButton').on('click', () => {
+    $('.dancer').mouseover( () => {
       window.dancers.forEach(dancer => {
         if (dancer.danceProcessId) {
           dancer.stopDance();

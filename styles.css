@@ -13,21 +13,28 @@ body {
 }
 
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: rgb(73, 119, 248);
+  font-variant: small-caps;
 }
 
 .title, .addDancerButton, .lineUpButton, .findPartnerButton {
   padding:5px 12px;
   float:left;
+  text-decoration: none;
+}
+
+.addDancerButton:hover, .lineUpButton:hover, .findPartnerButton:hover {
+  color: rgb(80, 80, 80);
 }
 
 .topbar{
   height:32px;
-  background-color: #555;
+  background-color: rgb(249, 249, 249);
 }
 
 .title{
-  background-color: #777;
+  background-color: rgb(249, 249, 249);
+  color: rgb(80, 80, 80);
 }
 
 .dancer{
@@ -53,5 +60,9 @@ body, a:link, a:visited, a:active{
 .dancerPartnerEffect {
   border:10px solid red;
   border-radius:100px;
+}
+
+.audio {
+  float:right;
 }
 
