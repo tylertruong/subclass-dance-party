@@ -41,3 +41,7 @@ makeDancer.prototype.lineUp = function(offset) {
 
 };
 
+makeDancer.prototype.danceWithPartner = function(otherDancer) {
+  this.$node.addClass('dancerPartnerEffect');
+  otherDancer.$node.addClass('dancerPartnerEffect');
+};

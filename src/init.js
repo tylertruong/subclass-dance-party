@@ -37,7 +37,26 @@ $(document).ready(function() {
     });
   });
 
-
+  $('.findPartnerButton').on('click', function(event) {
+    for (var i = 0; i < window.dancers.length; i++) {
+      var minPartner = window.dancers[i];
+      for (var j = 0; j < window.dancers.length; j++) {
+        if (i === j) {
+          continue;
+        }
+        var verticalDistance = window.dancers[i].top - window.dancers[j].top;
+        var horizontalDistance = window.dancers[i].left - window.dancers[j].left;
+        var distance = Math.sqrt(Math.pow(verticalDistance, 2) + Math.pow(horizontalDistance, 2));
+        var minDistance = minDistance || distance;
+        if (distance <= minDistance) {
+          minDistance = distance;
+          minPartner = window.dancers[j];
+        }
+          
+      }
+      window.dancers[i].danceWithPartner(minPartner);
+    }
+  });
 
 });
 
